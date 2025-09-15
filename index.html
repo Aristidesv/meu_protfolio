@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aristides Nunes Vundo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ======= Estilo Global ======= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Fira Mono', monospace;
+      background: linear-gradient(120deg, #1a1d23 0%, #2a2f38 100%);
+      color: #d1d5db;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: #6cb2eb;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #a3d8f4;
+    }
+
+    /* ======= Navbar ======= */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(30, 34, 40, 0.95);
+      color: #d1d5db;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid #6cb2eb;
+    }
+    nav .logo {
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      color: #6cb2eb;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+    nav ul li a {
+      color: #d1d5db;
+      font-weight: bold;
+      font-size: 0.9rem;
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav ul li a:hover {
+      background: #6cb2eb33;
+      color: #6cb2eb;
+    }
+
+    /* ======= Header ======= */
+    header {
+      background: linear-gradient(135deg, #2a2f38 60%, #6cb2eb 100%);
+      color: #d1d5db;
+      text-align: center;
+      padding: 5rem 1rem 3rem;
+      margin-top: 60px; /* compensar navbar fixa */
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid #6cb2eb;
+    }
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #6cb2eb;
+      box-shadow: 0 0 12px rgba(108, 178, 235, 0.5);
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    header img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(108, 178, 235, 0.8);
+    }
+    header h1 {
+      font-size: 1.8rem;
+      color: #6cb2eb;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #a3d8f4;
+    }
+
+    /* ======= Seções ======= */
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: rgba(40, 44, 52, 0.95);
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+      border: 1px solid #6cb2eb;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-in-out;
+      font-size: 0.95rem;
+    }
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section h2 {
+      color: #6cb2eb;
+      border-bottom: 1px solid #6cb2eb;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin: 0.5rem 0;
+    }
+    ul li strong {
+      color: #6cb2eb;
+    }
+    a.link {
+      color: #6cb2eb;
+      font-weight: bold;
+    }
+    a.link:hover {
+      text-decoration: underline;
+    }
+
+    /* ======= Contato ======= */
+    #contato ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    #contato ul li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #contato ul li i {
+      font-size: 1.2rem;
+      color: #6cb2eb;
+    }
+    #contato ul li a {
+      font-size: 0.9rem;
+      color: #d1d5db;
+      transition: color 0.3s;
+    }
+    #contato ul li a:hover {
+      color: #6cb2eb;
+    }
+
+    /* ======= Footer ======= */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #1a1d23;
+      color: #6cb2eb;
+      border-top: 1px solid #6cb2eb;
+      font-size: 0.85rem;
+    }
+
+    /* Efeito de cursor piscando */
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      background: #6cb2eb;
+      animation: blink 1s steps(2, start) infinite;
+      height: 1em;
+      vertical-align: bottom;
+      margin-left: 2px;
+    }
+    @keyframes blink {
+      to { opacity: 0; }
+    }
+
+    /* ======= Responsividade ======= */
+    
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      header {
+        padding: 4rem 1rem 2rem;
+      }
+      header img {
+        width: 100px;
+        height: 100px;
+      }
+      header h1 {
+        font-size: 1.5rem;
+      }
+      header p {
+        font-size: 0.8rem;
+      }
+      section {
+        padding: 1rem;
+        font-size: 0.9rem;
+      }
+      footer {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= Navbar ======= -->
+  <nav>
+    <div class="logo">Aristides Vundo</div>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#formacao">Formação</a></li>
+      <li><a href="#experiencia">Experiência</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+   <!-- ======= Header ======= -->
+
+  <header>
+    <img src="179637409.jpeg" alt="Sua Foto">
+    <h1>Aristides Nunes Vundo</h1>
+    <p>"Vida Eterna, esteja sempre dois passos em frente deles"</p>
+  </header>
+<!-- ======== Fim do Header ======= --> 
+  <!-- ======= Seções ======= -->
+  <section id="sobre">
+    <h2>Sobre Mim</h2>
+    <p>
+      Aristides Nunes Vundo de Vilanculos, Inhambane, Mozambique. Estudante 
+      de Engenharia Informática na Universidade Zambeze. Apaixonado por tecnologia,
+      programação e inovação. Tenho experiência como Técnico de Fibra Óptica, ja trabalhei
+      na Movitel 2022-2023, ja efectuei varios trabalhos no Municipio de Vilanculos de conexoes internas 
+      de rede e também como Programador Front-end e Back-end em projetos pessoais.
+      Domínio de linguagens como HTML, CSS, JavaScript, Python, Java, C, SQL e PHP
+      e atualmente estou a desenvolver projetos pessoais como CEO da SongLines e Teddy Vundo Store e 
+      estou a aprender Marketing e tenho canal no YouTube onde partilho meus gostos musicais.
+      Estou sempre em busca de novos desafios e oportunidades para crescer profissionalmente.  
+    </p>
+  </section>
+
+  <section id="formacao">
+    <h2>Formação Acadêmica</h2>
+    <ul>
+      <li><strong>Engenharia Informática</strong> – Universidade Zambeze (2023 - Presente)</li>
+      <li><strong>MySQL</strong> – Albaba (2025-presente)</li>
+      <li><strong>Marketing</strong> – Curso Online (2025-presente)</li>
+    </ul>
+  </section>
+
+  <section id="experiencia">
+    <h2>Experiência</h2>
+    <ul>
+      <li><strong>Movitel</strong> – Técnico de Fibra Óptica (2022 - 2023)</li>
+      <li><strong>Ex ADM</strong> – Pagina Coltura Mocambicana, DBM & TV</li>
+      <li><strong>Programador Front-end e Back-end</strong> – Projetos pessoais</li>
+      <li><strong>CEO</strong> – SongLines e Teddy Vundo (em desenvolvimento)</li>
+    </ul>
+  </section>
+
+  <section id="projetos">
+    <h2>Publicações e Projetos</h2>
+    <ul>
+      <li><a href="#contato" class="link">GitHub para mais </a> – Varios projectos pessoais na minha conta git </li>
+    </ul>
+  </section>
+
+  <!-- ======= Contato ======= -->
+  <section id="contato">
+    <h2>Contato</h2>
+    <ul>
+      <li>
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:aristidesvundo@gmail.com">aristidesvundo@gmail.com</a>
+      </li>
+      <li>
+        <i class="fab fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/aristides-vundo-6b5817242/" target="_blank">LinkedIn</a>
+      </li>
+      <li>
+        <i class="fab fa-github"></i>
+        <a href="https://github.com/Aristidesv" target="_blank">GitHub</a>
+      </li>
+      <li>
+        <i class="fas fa-phone"></i>
+        <a href="tel:+25-87423-6142">(25) 87423-6142</a>
+      </li>
+      <li>
+        <i class="fab fa-instagram"></i>
+        <a href="https://www.instagram.com/iam_teddy_vundo_oficial/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer>
+    <p>&copy; 2025 Aristides Nunes Vundo. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- ======= JavaScript ======= -->
+  <script>
+    // Efeito "revelar seção ao rolar"
+    const sections = document.querySelectorAll("section");
+
+    function revealSections() {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) {
+          section.classList.add("show");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealSections);
+    revealSections(); // chamar ao carregar
+  </script>
+
+</body>
+</html>
