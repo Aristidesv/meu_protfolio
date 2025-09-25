@@ -129,23 +129,6 @@
       margin-bottom: 1rem;
       font-size: 1.2rem;
     }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul li {
-      margin: 0.5rem 0;
-    }
-    ul li strong {
-      color: #6cb2eb;
-    }
-    a.link {
-      color: #6cb2eb;
-      font-weight: bold;
-    }
-    a.link:hover {
-      text-decoration: underline;
-    }
 
     /* ======= Contato ======= */
     #contato ul {
@@ -182,52 +165,66 @@
       border-top: 1px solid #6cb2eb;
       font-size: 0.85rem;
     }
+    /* ======= Habilidades ======= */
+#habilidades {
+  text-align: center;
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.skill {
+  background: rgba(30, 34, 40, 0.8);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #6cb2eb;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.skill:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(108,178,235,0.6);
+}
+.skill i {
+  font-size: 2.5rem;
+  color: #6cb2eb;
+  margin-bottom: 0.5rem;
+}
+.skill p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #d1d5db;
+}
 
-    /* Efeito de cursor piscando */
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      background: #6cb2eb;
-      animation: blink 1s steps(2, start) infinite;
-      height: 1em;
-      vertical-align: bottom;
-      margin-left: 2px;
+    /* ======= Mobile Nav (esconde no desktop) ======= */
+    .mobile-nav {
+      display: none; /* 🚀 escondido por padrão */
     }
-    @keyframes blink {
-      to { opacity: 0; }
-    }
-
-    /* ======= Responsividade ======= */
-    
     @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        padding: 1rem;
+      .mobile-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(30, 34, 40, 0.95);
+        border-top: 1px solid #6cb2eb;
+        padding: 0.5rem 0;
+        z-index: 1000;
       }
-      nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
+      .mobile-nav a {
+        color: #d1d5db;
+        font-size: 1.4rem;
+        transition: color 0.3s;
       }
-      header {
-        padding: 4rem 1rem 2rem;
+      .mobile-nav a:hover {
+        color: #6cb2eb;
       }
-      header img {
-        width: 100px;
-        height: 100px;
-      }
-      header h1 {
-        font-size: 1.5rem;
-      }
-      header p {
-        font-size: 0.8rem;
-      }
-      section {
-        padding: 1rem;
-        font-size: 0.9rem;
-      }
-      footer {
-        font-size: 0.75rem;
-      }
+      nav ul { display: none; } /* 🚀 esconde menu de cima no mobile */
     }
   </style>
 </head>
@@ -245,19 +242,17 @@
     </ul>
   </nav>
 
-   <!-- ======= Header ======= -->
-
+  <!-- ======= Header ======= -->
   <header>
     <img src="IMG-20250111-WA0000.jpg" alt="Sua Foto">
     <h1>Aristides Nunes Vundo</h1>
     <p>"Vida Eterna, esteja sempre dois passos em frente deles"</p>
   </header>
-<!-- ======== Fim do Header ======= --> 
+
   <!-- ======= Seções ======= -->
   <section id="sobre">
     <h2>Sobre Mim</h2>
-    <p>
-      Aristides Nunes Vundo de Vilanculos, Inhambane, Mozambique. Estudante 
+    <p>Aristides Nunes Vundo de Vilanculos, Inhambane, Mozambique. Estudante 
       de Engenharia Informática na Universidade Zambeze na Cidade da Beira. Apaixonado por tecnologia,
       programação e inovação. Tenho experiência como Técnico de Fibra Óptica, ja trabalhei
       na Movitel 2022-2023, ja efectuei varios trabalhos na Cidade  de Vilanculos de conexoes internas 
@@ -265,12 +260,10 @@
       Domínio de linguagens como HTML, CSS, JavaScript, Python, Java, C, SQL e PHP
       e atualmente estou a desenvolver projetos pessoais como CEO da SongLines e Teddy Vundo Store e 
       estou a aprender Marketing e tenho canal no YouTube onde partilho meus gostos musicais.
-      Estou sempre em busca de novos desafios e oportunidades para crescer profissionalmente.  
-    </p>
-  </section>
-
+      Estou sempre em busca de novos desafios e oportunidades para crescer profissionalmente. </p>
+    </section>
   <section id="formacao">
-    <h2>Formação Acadêmica</h2>
+    <h2>Formação</h2> 
     <ul>
       <li><strong>Engenharia Informática</strong> – Universidade Zambeze (2023 - Presente)</li>
       <li><strong>Lingua Inglesa</strong> – Joseph Inglesh School (2022 - 2023)</li>
@@ -278,29 +271,80 @@
       <li><strong>Marketing</strong> – Curso Online (2025-presente)</li>
     </ul>
   </section>
-
   <section id="experiencia">
     <h2>Experiência</h2>
-    <ul>
+        <ul>
       <li><strong>Movitel</strong> – Técnico de Fibra Óptica (2022 - 2023)</li>
       <li><strong>Ex ADM</strong> – Pagina Cultura Mocambicana, DBM & TV</li>
       <li><strong>Designer Grafico</strong> – Varios Projectos </li>
       <li><strong>Programador Front-end e Back-end</strong> – Projetos pessoais</li>
       <li><strong>CEO</strong> – SongLines e Teddy Vundo (em desenvolvimento)</li>
-    </ul>
+    </ul> 
   </section>
+    <section id="habilidades">
+    <h2>Habilidades</h2>
+    <div class="skills-grid">
+      <div class="skill">
+        <i class="fab fa-html5"></i>
+        <p>HTML</p>
+      </div>
+      <div class="skill">
+        <i class="fab fa-css3-alt"></i>
+        <p>CSS</p>
+      </div>
+      <div class="skill">
+        <i class="fab fa-js-square"></i>
+        <p>JS</p>
+      </div>
+      <div class="skill">
+        <i class="fab fa-python"></i>
+        <p>Python</p>
+      </div>
+      <div class="skill">
+        <i class="fab fa-java"></i>
+        <p>Java</p>
+      </div>
+      <div class="skill">
+        <i class="fas fa-database"></i>
+        <p>SQL/MySQL</p>
+      </div>
+      <div class="skill">
+        <i class="fab fa-php"></i>
+        <p>PHP</p>
+      </div>
+      <div class="skill">
+        <i class="fas fa-c"></i>
+        <p>C</p>
+      </div>
+      <div class="skill">
+        <i class="fas fa-paint-brush"></i>
+        <p>Photoshop</p>
+      </div>
+      <div class="skill">
+        <i class="fas fa-video"></i>
+        <p>Cap Cut</p>
 
+    </div>
+  </section>
   <section id="projetos">
-    <h2>Publicações e Projetos</h2>
+    <h2>Projetos</h2>
     <ul>
-      <li><a href="#contato" class="link">GitHub para mais </a> – Varios projectos pessoais na minha conta git </li>
+    <li>
+      <i class="fas fa-cloud-sun"></i>
+      <a href="meteorologiahoje.vercel.app" target="_blank">meteorologia do dia </a>
+    </li>
+    <p>Projeto de previsão do tempo usando HTML, CSS, JavaScript e API de clima.</p>
+    <li>
+      <i  class="fab fa-github"></i>
+      <a href="https://github.com/Aristidesv" target="_blank"> Mais no GitHub </a>
+    </li>
+    <p>Repositório com diversos projetos de programação em diversas linguagens.</p>
+   
     </ul>
   </section>
-
-  <!-- ======= Contato ======= -->
   <section id="contato">
     <h2>Contato</h2>
-    <ul>
+   <ul>
       <li>
         <i class="fas fa-envelope"></i>
         <a href="mailto:aristidesvundo@gmail.com">aristidesvundo@gmail.com</a>
@@ -321,34 +365,36 @@
         <i class="fab fa-instagram"></i>
         <a href="https://www.instagram.com/iam_teddy_vundo_oficial/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a>
       </li>
-    </ul>
-  </section>
+    </ul> 
+    </section>
+
+  <!-- ======= Mobile Nav (só aparece em telas pequenas) ======= -->
+  <div class="mobile-nav">
+    <a href="#sobre"><i class="fas fa-user"></i></a>
+    <a href="#formacao"><i class="fas fa-graduation-cap"></i></a>
+    <a href="#experiencia"><i class="fas fa-briefcase"></i></a>
+    <a href="#projetos"><i class="fas fa-code"></i></a>
+    <a href="#contato"><i class="fas fa-envelope"></i></a>
+  </div>
 
   <!-- ======= Footer ======= -->
   <footer>
     <p>&copy; 2025 Aristides Nunes Vundo. Todos os direitos reservados.</p>
   </footer>
 
-  <!-- ======= JavaScript ======= -->
+  <!-- ======= JS ======= -->
   <script>
-    // Efeito "revelar seção ao rolar"
     const sections = document.querySelectorAll("section");
-
     function revealSections() {
       const triggerBottom = window.innerHeight * 0.85;
       sections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < triggerBottom) {
-          section.classList.add("show");
-        } else {
-          section.classList.remove("show");
-        }
+        if (sectionTop < triggerBottom) section.classList.add("show");
+        else section.classList.remove("show");
       });
     }
-
     window.addEventListener("scroll", revealSections);
-    revealSections(); // chamar ao carregar
+    revealSections();
   </script>
-
 </body>
 </html>
